@@ -135,12 +135,19 @@ game2:;
 // game 3
 game3:;
     printf("*** Guess A Number! ***\n");
-    int number = randomNumber(1, 100);
+    int min = 1, max = 100;
+    int number = randomNumber(min, max);
     int userNum = 0;
-    printf("Guess a number between 1 and 100: \n");
+    printf("Guess a number between %d and %d: \n", min, max);
     do
     {
         scanf("%d", &userNum);
+        if (userNum > max || userNum < min)
+        {
+            printf("Your guess is out of range!\n");
+            printf("Guess a number between %d and %d: \n", min, max);
+            continue;
+        }
         if (userNum > number)
         {
             printf("TOO HIGH!\n");
